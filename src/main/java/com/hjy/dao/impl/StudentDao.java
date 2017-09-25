@@ -111,12 +111,13 @@ public class StudentDao implements IStudentDao {
     public void updateStudent(Student stu) {
         try {
             conn = DatabaseBean.getConnection();
-            psmt = conn.prepareStatement("update tb_student set sname=?,ssex=?,sage=?,sdept=? where sno=? ");
+            psmt = conn.prepareStatement("update tb_student set sname=?,password=?,ssex=?,sage=?,sdept=? where sno=? ");
             psmt.setString(1, stu.getSname());
-            psmt.setString(2, stu.getSsex());
-            psmt.setInt(3, stu.getSage());
-            psmt.setString(4, stu.getSdept());
-            psmt.setString(5, stu.getSno());
+            psmt.setString(2,stu.getPassword());
+            psmt.setString(3, stu.getSsex());
+            psmt.setInt(4, stu.getSage());
+            psmt.setString(5, stu.getSdept());
+            psmt.setString(6, stu.getSno());
             psmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,9 +126,6 @@ public class StudentDao implements IStudentDao {
         }
     }
 
-    public List<Student> getAllStudent(javafx.scene.control.Pagination pagination) {
-        return null;
-    }
 
     @Override
     public List<Student> getAllStudent(Pagination pagination) {

@@ -12,6 +12,7 @@ public class DaoFactory {
     public static IStudentDao getStudentDao() {
         return new StudentDao();
     }
+
     public static ICourseDao getCourseDao() {
         return new CourseDao();
     }

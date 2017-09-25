@@ -62,7 +62,7 @@
         </div>
         <hr />
         <div class="padding-little">
-            <li><a href="#">修改密码</a></li>
+            <li><a href="RevisePassword.jsp">修改密码</a></li>
         </div>
     </div>
     <div class="xl10 xs10 xm10 xb10 padding-small-top border-left">
