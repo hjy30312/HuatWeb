@@ -1,6 +1,7 @@
 package com.hjy.dao.impl;
 
 import com.hjy.dao.IStudentDao;
+import com.hjy.model.Course;
 import com.hjy.model.Student;
 import com.hjy.util.DatabaseBean;
 import com.hjy.util.Pagination;
@@ -9,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -158,7 +161,31 @@ public class StudentDao implements IStudentDao {
             DatabaseBean.close(rs, psmt, conn);
         }
         return students;
+    }
 
+    @Override
+    public void getStudentCourse(String sno) {
+        Map<Course,Double> stuCourse = new HashMap<Course, Double>();
+        try {
+            conn = DatabaseBean.getConnection();
+            String sql = "select ";
+            psmt = conn.prepareStatement("select * from tb_student where sno=?");
+            psmt.setString(1, sno);
+            rs = psmt.executeQuery();
+            if (rs.next()) {
+                stu = new Student();
+                stu.setSno(rs.getString("sno"));
+                stu.setSname(rs.getString("sname"));
+                stu.setPassword(rs.getString("password"));
+                stu.setSsex(rs.getString("ssex"));
+                stu.setSage(rs.getInt("sage"));
+                stu.setSdept(rs.getString("sdept"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DatabaseBean.close(rs, psmt, conn);
+        }
     }
 
 }

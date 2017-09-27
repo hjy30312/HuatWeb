@@ -1,4 +1,11 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/9/26
+  Time: 20:33
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -52,41 +59,36 @@
     <div class="xl10 xs10 xm10 xb10 padding-small-top border-left">
         <ul class="bread bg">
             <li><a href="#" class="icon-home">首页</a> </li>
-            <li><a href="#">系统中心</a></li>
+            <li><a href="#">选课管理</a></li>
         </ul>
-        <form action="RevisePassword"  method="post" class="form form-block">
-            <div class="form-group">
-                <div class="label">
-                    <label for="oldpassword">
-                        原始密码</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" id="oldPassword" name="oldPassword" size="50" data-validate="required:必填" placeholder="原密码" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label for="newPassword">
-                        密码</label>
-                </div>
-                <div class="field">
-                    <input type="password" class="input" id="newPassword" name="newPassword" size="50" data-validate="required:必填" placeholder="新密码" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label for="rePassword">
-                        确认密码</label>
-                </div>
-                <div class="field">
-                    <input type="password" class="input" id="rePassword" name="rePassword" size="50" data-validate="required:必填" placeholder="确认密码" />
-                </div>
-            </div>
-            <div class="form-button">
-                <button class="button" type="submit">
-                    登录</button>
-            </div>
-        </form>
+
+        <table class="table table-striped">
+            <tr>
+                <th>课程号</th>
+                <th>课程名</th>
+                <th>前导课名</th>>
+                <th>课程学分</th>
+                <th>总学时</th>>
+                <th>理论学时</th>
+                <th>实验学时</th>>
+                <th>成绩</th>>
+            </tr>
+            <c:forEach var="course" items="courses">
+                <c:forEach var="sc" items="scs">
+                <tr>
+                    <td>${courses.cno}</td>
+                    <td>${courses.cname}</td>
+                    <td>${courses.cpno}</td>
+                    <td>${courses.ccredit}</td>
+                    <td>${courses.period}</td>
+                    <td>${courses.theory}</td>
+                    <td>${courses.experiment}</td>
+                    <td>${sc.}</td>>
+                </tr>
+                </c:forEach>
+            </c:forEach>
+        </table>
+
     </div>
 </div>
 <!--底部-->

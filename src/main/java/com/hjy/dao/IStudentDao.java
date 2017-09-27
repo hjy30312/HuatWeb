@@ -16,4 +16,10 @@ public interface IStudentDao {
 	public void updateStudent(Student stu);
 
 	public List<Student> getAllStudent(Pagination pagination);
+
+	/**
+	 * 得到学生已选择的课程的信息
+	 * @param sno
+	 */
+	public void getStudentCourse(String sno);
 }
