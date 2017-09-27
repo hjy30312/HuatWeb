@@ -27,7 +27,7 @@ public class ScDao implements IScDao {
 	ResultSet rs = null;
 
 	public List<Sc> getAllSc(Pagination pagination) {
-		List<Sc> scs = new ArrayList<Sc>();
+		List<Sc> scs = new ArrayList<Sc>();/*
 		try {
 			conn = DatabaseBean.getConnection();
 			psmt = conn.prepareStatement("select count(*) as counts from tb_sc");
@@ -80,7 +80,7 @@ public class ScDao implements IScDao {
 		} finally {
 			DatabaseBean.close(rs, psmt, conn);
 		}
-		System.out.println(scs);
+		System.out.println(scs);*/
 		return scs;
 	}
 

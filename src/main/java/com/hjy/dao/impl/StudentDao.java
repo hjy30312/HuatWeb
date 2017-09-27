@@ -59,7 +59,7 @@ public class StudentDao implements IStudentDao {
             conn = DatabaseBean.getConnection();
             psmt = conn.prepareStatement("select * from tb_student where sno=?");
             psmt.setString(1, sno);
-            rs = psmt.executeQuery();
+            rs = psmt.executeQuery(); //用于获取单个结果集（ResultSet）
             if (rs.next()) {
                 stu = new Student();
                 stu.setSno(rs.getString("sno"));
@@ -164,28 +164,34 @@ public class StudentDao implements IStudentDao {
     }
 
     @Override
-    public void getStudentCourse(String sno) {
+    public Map<Course,Double> getStudentCourse(String sno) {
         Map<Course,Double> stuCourse = new HashMap<Course, Double>();
+        int count = 0;
         try {
             conn = DatabaseBean.getConnection();
-            String sql = "select ";
-            psmt = conn.prepareStatement("select * from tb_student where sno=?");
+            String sql = "select c.cno,c.cname,c.cpno,c.ccredit,c.period,c.theory,c.experiment,sc.grade " +
+                        "from tb_sc sc,tb_course c " +
+                        "where  sc.cno = c.cno and sno=?";
+            psmt = conn.prepareStatement(sql);
             psmt.setString(1, sno);
             rs = psmt.executeQuery();
-            if (rs.next()) {
-                stu = new Student();
-                stu.setSno(rs.getString("sno"));
-                stu.setSname(rs.getString("sname"));
-                stu.setPassword(rs.getString("password"));
-                stu.setSsex(rs.getString("ssex"));
-                stu.setSage(rs.getInt("sage"));
-                stu.setSdept(rs.getString("sdept"));
+            while (rs.next()) {
+                Course course = new Course();
+                course.setCno(rs.getString("cno"));
+                course.setCname(rs.getString("cname"));
+                course.setCpno(rs.getString("cpno"));
+                course.setCcredit(rs.getDouble("ccredit"));
+                course.setPeriod(rs.getInt("period"));
+                course.setExperiment(rs.getInt("experiment"));
+                stuCourse.put(course,rs.getDouble("grade"));
+                count++;
             }
         } catch (SQLException ex) {
             Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DatabaseBean.close(rs, psmt, conn);
         }
+        System.out.println("count:" + count);
+        return stuCourse;
     }
-
 }
