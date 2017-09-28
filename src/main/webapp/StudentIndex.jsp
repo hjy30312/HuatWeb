@@ -54,7 +54,7 @@
         </div>
         <hr />
         <div class="padding-little">
-            <li><a href="#">选课管理</a></li>
+            <li><a href="CourseManagement">选课管理</a></li>
         </div>
         <hr />
         <div class="padding-little">

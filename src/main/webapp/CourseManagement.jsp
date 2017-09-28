@@ -53,7 +53,7 @@
         </div>
         <hr />
         <div class="padding-little">
-            <li><a href="#">修改密码</a></li>
+            <li><a href="RevisePassword.jsp">修改密码</a></li>
         </div>
     </div>
     <div class="xl10 xs10 xm10 xb10 padding-small-top border-left">
@@ -66,29 +66,26 @@
             <tr>
                 <th>课程号</th>
                 <th>课程名</th>
-                <th>前导课名</th>>
+                <th>前导课名</th>
                 <th>课程学分</th>
-                <th>总学时</th>>
+                <th>总学时</th>
                 <th>理论学时</th>
-                <th>实验学时</th>>
-                <th>成绩</th>>
+                <th>实验学时</th>
+                <th>成绩</th>
             </tr>
-            <c:forEach var="course" items="courses">
-                <c:forEach var="sc" items="scs">
-                <tr>
-                    <td>${courses.cno}</td>
-                    <td>${courses.cname}</td>
-                    <td>${courses.cpno}</td>
-                    <td>${courses.ccredit}</td>
-                    <td>${courses.period}</td>
-                    <td>${courses.theory}</td>
-                    <td>${courses.experiment}</td>
-                    <td>${sc.}</td>>
-                </tr>
-                </c:forEach>
+            <c:forEach var="map" items="${map}">
+                    <tr>
+                        <td>${map.key.cno}</td>
+                        <td>${map.key.cname}</td>
+                        <td>${map.key.cpno}</td>
+                        <td>${map.key.ccredit}</td>
+                        <td>${map.key.period}</td>
+                        <td>${map.key.theory}</td>
+                        <td>${map.key.experiment}</td>
+                        <td>${map.value}</td>
+                    </tr>
             </c:forEach>
         </table>
-
     </div>
 </div>
 <!--底部-->
