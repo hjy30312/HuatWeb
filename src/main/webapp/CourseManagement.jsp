@@ -109,6 +109,9 @@
                     <td>${snc.period}</td>
                     <td>${snc.theory}</td>
                     <td>${snc.experiment}</td>
+                    <td>
+                        <a href="StudentInsertCourse?cno=${snc.cno}" class="button button-small border-red" onclick="return ConfInsert();"><span class="icon-trash-o"></span> 删除</a>
+                    </td>
                 </tr>
              </c:forEach>
         </table>
@@ -122,6 +125,17 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function ConfInsert() {
+        var tips = "你确定要选择当前课程吗？";
+        if (confirm(tips)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 </body>
 
 </html>

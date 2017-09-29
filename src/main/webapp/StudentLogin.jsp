@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group">
                             <div class="field field-icon-right">
-                                <input type="password" class="input" name="password" placeholder="密码" data-validate="required:请填写密码,length#>=8:密码长度不符合要求" />
+                                <input type="password" class="input" name="password" placeholder="密码" data-validate="required:请填写密码,length#>=2:密码长度不符合要求" />
                                 <span class="icon icon-key"></span>
                             </div>
                         </div>

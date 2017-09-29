@@ -1,6 +1,7 @@
 package com.hjy.servlet.student;
 
 import com.hjy.model.Course;
+import com.hjy.model.Student;
 import com.hjy.util.DaoFactory;
 
 import javax.servlet.ServletException;
@@ -19,11 +20,15 @@ public class CourseManagement extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
-        Map<Course,Double> map = DaoFactory.getStudentDao().getStudentCourse("9512101");
-        List<Course> studentNoCourse = DaoFactory.getStudentDao().getStudentNoCourse("9512101");
         HttpSession session = request.getSession();
+        Student student = (Student)session.getAttribute("student");
+        String sno = student.getSno();
+        Map<Course,Double> map = DaoFactory.getStudentDao().getStudentCourse(sno);
+        List<Course> studentNoCourse = DaoFactory.getStudentDao().getStudentNoCourse(sno);
+        session.setAttribute("sno", sno);
         session.setAttribute("map", map);
         session.setAttribute("studentNoCourse", studentNoCourse);
+
         //重定向  地址栏发生变化
         response.sendRedirect(request.getContextPath() + "/CourseManagement.jsp");
 

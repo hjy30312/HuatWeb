@@ -220,4 +220,22 @@ public class StudentDao implements IStudentDao {
         }
         return studentNoCourse;
     }
+
+
+    @Override
+    public void studentInsertCourse(String sno, String cno) {
+        try {
+            conn = DatabaseBean.getConnection();
+            String sql = "insert into tb_sc(sno,cno) values (?,?)";
+            psmt = conn.prepareStatement(sql);
+            psmt.setString(1, sno);
+            psmt.setString(2, cno);
+            psmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DatabaseBean.close(rs, psmt, conn);
+        }
+    }
 }

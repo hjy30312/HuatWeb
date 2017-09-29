@@ -32,4 +32,11 @@ public interface IStudentDao {
 	 */
 	public List<Course> getStudentNoCourse(String sno);
 
+	/**
+	 * 学生进行选课
+	 * @param sno
+	 * @param cno
+	 */
+	public void studentInsertCourse(String sno,String cno);
+
 }

@@ -13,5 +13,8 @@ public class Test
         for (Course course:map.keySet()) {
             System.out.println(course.getCname() + "----->" + map.get(course));
         }
+
+        DaoFactory.getStudentDao().studentInsertCourse("9512101",	"020630");
+
     }
 }
