@@ -24,4 +24,12 @@ public interface IStudentDao {
 	 * @param sno
 	 */
 	public Map<Course,Double> getStudentCourse(String sno);
+
+	/**
+	 * 得到学生没有选择的课程的信息
+	 * @param sno
+	 * @return
+	 */
+	public List<Course> getStudentNoCourse(String sno);
+
 }

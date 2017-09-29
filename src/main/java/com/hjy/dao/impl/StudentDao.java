@@ -166,7 +166,6 @@ public class StudentDao implements IStudentDao {
     @Override
     public Map<Course,Double> getStudentCourse(String sno) {
         Map<Course,Double> stuCourse = new HashMap<Course, Double>();
-        int count = 0;
         try {
             conn = DatabaseBean.getConnection();
             String sql = "select c.cno,c.cname,c.cpno,c.ccredit,c.period,c.theory,c.experiment,sc.grade " +
@@ -184,14 +183,41 @@ public class StudentDao implements IStudentDao {
                 course.setPeriod(rs.getInt("period"));
                 course.setExperiment(rs.getInt("experiment"));
                 stuCourse.put(course,rs.getDouble("grade"));
-                count++;
             }
         } catch (SQLException ex) {
             Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DatabaseBean.close(rs, psmt, conn);
         }
-        System.out.println("count:" + count);
         return stuCourse;
+    }
+
+    @Override
+    public List<Course> getStudentNoCourse(String sno) {
+        List<Course> studentNoCourse = new ArrayList<Course>();
+        try {
+            conn = DatabaseBean.getConnection();
+            String sql = "select c.* from tb_course c left join tb_sc sc " +
+                    "on c.cno=sc.cno and sc.sno=? " +
+                    "where sc.cno is null";
+            psmt = conn.prepareStatement(sql);
+            psmt.setString(1, sno);
+            rs = psmt.executeQuery();
+            while (rs.next()) {
+                Course course = new Course();
+                course.setCno(rs.getString("cno"));
+                course.setCname(rs.getString("cname"));
+                course.setCpno(rs.getString("cpno"));
+                course.setCcredit(rs.getDouble("ccredit"));
+                course.setPeriod(rs.getInt("period"));
+                course.setExperiment(rs.getInt("experiment"));
+                studentNoCourse.add(course);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DatabaseBean.close(rs, psmt, conn);
+        }
+        return studentNoCourse;
     }
 }

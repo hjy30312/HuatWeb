@@ -56,7 +56,6 @@
             <li><a href="RevisePassword.jsp">修改密码</a></li>
         </div>
     </div>
-    <div class="xl10 xs10 xm10 xb10 padding-small-top border-left">
         <ul class="bread bg">
             <li><a href="#" class="icon-home">首页</a> </li>
             <li><a href="#">选课管理</a></li>
@@ -85,6 +84,33 @@
                         <td>${map.value}</td>
                     </tr>
             </c:forEach>
+        </table>
+        未选课程
+        <br>
+        <table class="table table-striped">
+            <tr>
+                <th>选择</th>>
+                <th>课程号</th>
+                <th>课程名</th>
+                <th>前导课名</th>
+                <th>课程学分</th>
+                <th>总学时</th>
+                <th>理论学时</th>
+                <th>实验学时</th>
+                <th>操作</th>
+            </tr>
+            <c:forEach var="snc" items="${studentNoCourse}">
+                <tr>
+                    <td></td>
+                    <td>${snc.cno}</td>
+                    <td>${snc.cname}</td>
+                    <td>${snc.cpno}</td>
+                    <td>${snc.ccredit}</td>
+                    <td>${snc.period}</td>
+                    <td>${snc.theory}</td>
+                    <td>${snc.experiment}</td>
+                </tr>
+             </c:forEach>
         </table>
     </div>
 </div>
