@@ -40,7 +40,7 @@
             <br />
             <br />
             <br />
-            <form action="index.html" method="post">
+            <form action="StudentLogin" method="post">
                 <div class="panel padding">
                     <div class="text-center">
                         <br>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-group">
                             <div class="field field-icon-right">
-                                <input type="password" class="input" name="password" placeholder="登录密码" data-validate="required:请填写密码,length#>=8:密码长度不符合要求" />
+                                <input type="password" class="input" name="password" placeholder="登录密码" data-validate="required:请填写密码,length#>=6:密码长度不符合要求" />
                                 <span class="icon icon-key"></span>
                             </div>
                         </div><!--
