@@ -11,7 +11,7 @@
 					</button>
 
 					<button type="button" class="button bg-red dropdown-hover">
-						<a href="ManagerLogin.jsp"> 管理员登录</a>
+						<a href="UserLogin.jsp"> 管理员登录</a>
 						<span class="float-right"></span>
 					</button>
 				</div>
