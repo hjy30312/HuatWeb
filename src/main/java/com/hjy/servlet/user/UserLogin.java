@@ -23,12 +23,12 @@ public class UserLogin extends HttpServlet {
             throws IOException, ServletException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String userName =request.getParameter("userName");
+        String userName =request.getParameter("username");
         String password = request.getParameter("password");
         User user = DaoFactory.getUserDao().getUser(userName);
 
         if (user != null) {
-            if (user.getPassword().equals(password)) {
+            if (password.equals(user.getPassword())) {
                 //将user放入session
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);

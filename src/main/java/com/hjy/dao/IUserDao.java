@@ -1,6 +1,9 @@
 package com.hjy.dao;
 
+import com.hjy.model.Course;
 import com.hjy.model.User;
+
+import java.util.List;
 
 public interface IUserDao {
     /**
@@ -9,4 +12,10 @@ public interface IUserDao {
      * @return
      */
     public User getUser(String username);
+
+    /**
+     * 得到所有的课程信息
+     * @return
+     */
+    public List<Course> getAllCourse();
 }

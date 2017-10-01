@@ -29,7 +29,6 @@ public class StudentDao implements IStudentDao {
 
 
     public List<Student> getAllStudent() {
-    	System.out.println(123);
         List<Student> students = new ArrayList<Student>();
         try {
             conn = DatabaseBean.getConnection();

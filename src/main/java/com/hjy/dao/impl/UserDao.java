@@ -1,6 +1,7 @@
 package com.hjy.dao.impl;
 
 import com.hjy.dao.IUserDao;
+import com.hjy.model.Course;
 import com.hjy.model.User;
 import com.hjy.util.DatabaseBean;
 
@@ -8,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,5 +40,31 @@ public class UserDao implements IUserDao{
             DatabaseBean.close(rs, psmt, conn);
         }
         return user;
+    }
+
+
+    @Override
+    public List<Course> getAllCourse() {
+        List<Course> courses = new ArrayList<Course>();
+        try {
+          conn = DatabaseBean.getConnection();
+          String sql = "select * from tb_users";
+          psmt = conn.prepareStatement(sql);
+          rs = psmt.executeQuery();
+          while (rs.next()) {
+              Course course = new Course();
+              course.setCno(rs.getString("cno"));
+              course.setCname(rs.getString("cname"));
+              course.setCpno(rs.getString("cpno"));
+              course.setCcredit(rs.getDouble("ccredit"));
+              course.setPeriod(rs.getInt("period"));
+              course.setTheory(rs.getInt("theory"));
+              course.setExperiment(rs.getInt("experiment"));
+              courses.add(course);
+          }
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return courses;
     }
 }
