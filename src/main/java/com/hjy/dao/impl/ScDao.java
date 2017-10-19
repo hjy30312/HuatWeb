@@ -26,7 +26,8 @@ public class ScDao implements IScDao {
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 
-	public List<Sc> getAllSc(Pagination pagination) {
+	@Override
+    public List<Sc> getAllSc(Pagination pagination) {
 		List<Sc> scs = new ArrayList<Sc>();/*
 		try {
 			conn = DatabaseBean.getConnection();
@@ -84,22 +85,26 @@ public class ScDao implements IScDao {
 		return scs;
 	}
 
-	public void getGrade(String sno, String cno) {
+	@Override
+    public void getGrade(String sno, String cno) {
 		// TODO Auto-generated method stub
 
 	}
 
-	public void deleteGrade(String sno, String cno) {
+	@Override
+    public void deleteGrade(String sno, String cno) {
 		// TODO Auto-generated method stub
 
 	}
 
-	public void updateGrade(String sno, String cno) {
+	@Override
+    public void updateGrade(String sno, String cno) {
 		// TODO Auto-generated method stub
 
 	}
 
-	public void getStudentGrade(String sno) {
+	@Override
+    public void getStudentGrade(String sno) {
 		// TODO Auto-generated method stub
 
 	}

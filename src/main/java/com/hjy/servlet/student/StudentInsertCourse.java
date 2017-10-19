@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "StudentInsertCourse" ,urlPatterns = {"/StudentInsertCourse"})
 public class StudentInsertCourse extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         proceesRequest(request, response);
     }
@@ -32,6 +33,7 @@ public class StudentInsertCourse extends HttpServlet {
 
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         proceesRequest(request, response);
     }

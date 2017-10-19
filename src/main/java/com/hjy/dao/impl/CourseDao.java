@@ -75,7 +75,8 @@ public class CourseDao implements ICourseDao {
 		return course;
 	}
 
-	public Course cnameGetCourse(String cname) {
+	@Override
+    public Course cnameGetCourse(String cname) {
 		Course course = null;
 		try {
 			conn = DatabaseBean.getConnection();

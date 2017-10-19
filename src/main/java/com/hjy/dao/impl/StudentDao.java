@@ -28,6 +28,7 @@ public class StudentDao implements IStudentDao {
     ResultSet rs = null;
 
 
+    @Override
     public List<Student> getAllStudent() {
         List<Student> students = new ArrayList<Student>();
         try {
