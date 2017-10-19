@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<footer>
 <div class="container">
     <div class="border-top padding-top">
         <div class="text-center">
@@ -15,3 +16,4 @@
             版权所有 © Pintuer.com All Rights Reserved，图ICP备：380959609</div>
     </div>
 </div>
+</footer>

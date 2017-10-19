@@ -4,6 +4,7 @@ import com.hjy.model.Course;
 import com.hjy.model.Student;
 import com.hjy.util.DaoFactory;
 import com.hjy.util.DatabaseBean;
+import com.hjy.util.Pagination;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,12 +15,25 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "StudentManagement", urlPatterns = "/StudentManagement")
-public class StudentManagement extends HttpServlet {
+@WebServlet(name = "UserCourseManagement", urlPatterns = "/UserCourseManagement")
+public class UserCourseManagement extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=UTF-8");
-        List<Course> courses = DaoFactory.getUserDao().getAllCourse();
 
+        String pageNo = request.getParameter("pageNo");
+        int page = 1;
+        if(pageNo != null) {
+            page = Integer.parseInt(pageNo);
+        }
+
+        Pagination pagination = new Pagination();
+        pagination.setPageNo(page);
+        pagination.setUrl("UserCourseManagement?");
+        List<Course> courses = DaoFactory.getCourseDao().getAllCourse(pagination);
+        request.setAttribute("courses", courses);
+        request.setAttribute("pagination", pagination);
+
+        //request.getRequestDispatcher("displayStudent.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
