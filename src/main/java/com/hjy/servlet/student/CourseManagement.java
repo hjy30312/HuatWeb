@@ -2,7 +2,7 @@ package com.hjy.servlet.student;
 
 import com.hjy.model.Course;
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +23,8 @@ public class CourseManagement extends HttpServlet {
         HttpSession session = request.getSession();
         Student student = (Student)session.getAttribute("student");
         String sno = student.getSno();
-        Map<Course,Double> map = DaoFactory.getStudentDao().getStudentCourse(sno);
-        List<Course> studentNoCourse = DaoFactory.getStudentDao().getStudentNoCourse(sno);
+        Map<Course,Double> map = MyFactory.getStudentDao().getStudentCourse(sno);
+        List<Course> studentNoCourse = MyFactory.getStudentDao().getStudentNoCourse(sno);
         session.setAttribute("sno", sno);
         session.setAttribute("map", map);
         session.setAttribute("studentNoCourse", studentNoCourse);

@@ -2,7 +2,7 @@ package com.hjy.servlet.student;
 
 
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +20,7 @@ public class CheckSno extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String sno = request.getParameter("sno");
-        Student stu = DaoFactory.getStudentDao().getStudent(sno);
+        Student stu = MyFactory.getStudentDao().getStudent(sno);
         
         if(stu != null) {
             //学生存在

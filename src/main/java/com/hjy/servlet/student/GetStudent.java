@@ -2,7 +2,7 @@ package com.hjy.servlet.student;
 
 
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class GetStudent extends HttpServlet {
          * 因为在displayStudnet.jsp中的items="${students}"
          * 是List类型  所以得到的stu需要转换类型
          */
-        Student stu = DaoFactory.getStudentDao().getStudent(sno);
+        Student stu = MyFactory.getStudentDao().getStudent(sno);
         List <Student> students = new ArrayList<Student>();
         students.add(stu);
         request.setAttribute("students", students);

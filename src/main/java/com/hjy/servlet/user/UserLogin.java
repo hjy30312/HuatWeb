@@ -2,7 +2,7 @@ package com.hjy.servlet.user;
 
 import com.hjy.model.Student;
 import com.hjy.model.User;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +26,7 @@ public class UserLogin extends HttpServlet {
 
         String userName =request.getParameter("username");
         String password = request.getParameter("password");
-        User user = DaoFactory.getUserDao().getUser(userName);
+        User user = MyFactory.getUserDao().getUser(userName);
 
         if (user != null) {
             if (password.equals(user.getPassword())) {

@@ -1,7 +1,8 @@
 package com.hjy.servlet.student;
 
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +28,7 @@ public class StudentInsertCourse extends HttpServlet {
         String sno = student.getSno();
 
         String cno = request.getParameter("cno");
-        DaoFactory.getStudentDao().studentInsertCourse(sno,cno);
+        MyFactory.getStudentDao().studentInsertCourse(sno,cno);
         //重定向
         response.sendRedirect(request.getContextPath() + "/CourseManagement");
 

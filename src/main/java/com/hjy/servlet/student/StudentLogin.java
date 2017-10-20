@@ -1,7 +1,7 @@
 package com.hjy.servlet.student;
 
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 import org.springframework.ui.ModelMap;
 
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ public class StudentLogin extends HttpServlet {
         String sno = request.getParameter("sno");
         String password = request.getParameter("password");
         System.out.println("登录：" + sno  + " " + password);
-        Student student = DaoFactory.getStudentDao().getStudent(sno);
+        Student student = MyFactory.getStudentDao().getStudent(sno);
 
         if (student != null) {  //有这个学号
             System.out.println("数据库："+ student.getSname() + " " +student.getSno() + " " + student.getPassword());

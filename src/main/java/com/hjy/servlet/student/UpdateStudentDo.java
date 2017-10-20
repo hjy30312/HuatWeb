@@ -2,7 +2,7 @@ package com.hjy.servlet.student;
 
 
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +31,7 @@ public class UpdateStudentDo extends HttpServlet {
         stu.setSage(Integer.parseInt(sage));
         stu.setSdept(sdept);
         
-        DaoFactory.getStudentDao().updateStudent(stu);
+        MyFactory.getStudentDao().updateStudent(stu);
         //第二种方式:重定向 地址栏发生变化
         response.sendRedirect(request.getContextPath() + "/DisplayStudent");
     }

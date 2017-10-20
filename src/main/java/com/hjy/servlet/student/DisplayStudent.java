@@ -2,7 +2,7 @@ package com.hjy.servlet.student;
 
 
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 import com.hjy.util.Pagination;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,7 @@ public class DisplayStudent extends HttpServlet {
         pagination.setPageNo(page);
         pagination.setUrl("DisplayStudent?");
         
-        List<Student> students = DaoFactory.getStudentDao().getAllStudent(pagination);
+        List<Student> students = MyFactory.getStudentDao().getAllStudent(pagination);
         request.setAttribute("students", students);
         request.setAttribute("pagination", pagination);
         

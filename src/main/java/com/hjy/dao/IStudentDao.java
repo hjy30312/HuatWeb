@@ -6,7 +6,9 @@ import com.hjy.util.Pagination;
 import java.util.List;
 import java.util.Map;
 
+
 public interface IStudentDao {
+
     public List<Student> getAllStudent();
 
 	public Student getStudent(String sno);
@@ -16,6 +18,7 @@ public interface IStudentDao {
 	public void deleteStudent(String sno);
 
 	public void updateStudent(Student stu);
+
 
 	public List<Student> getAllStudent(Pagination pagination);
 

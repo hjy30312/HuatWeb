@@ -2,7 +2,7 @@ package com.hjy.dao.impl;
 
 import com.hjy.dao.IScDao;
 import com.hjy.model.Sc;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 import com.hjy.util.DatabaseBean;
 import com.hjy.util.Pagination;
 
@@ -50,7 +50,7 @@ public class ScDao implements IScDao {
 					if (rs.getString("sno") == scs.get(i).getSno()) {
 						String cno = rs.getString("cno");
 						
-						String name = DaoFactory.getCourseDao().cnoGetCourse(cno).getCname();
+						String name = MyFactory.getCourseDao().cnoGetCourse(cno).getCname();
 						int courseCount = scs.get(i).getCourseCount();
 						Double grade = rs.getDouble("grade");
 						scs.get(i).getSg().put(cno, grade);
@@ -64,10 +64,10 @@ public class ScDao implements IScDao {
 				sc.setSno(rs.getString("sno"));
 				String sno = rs.getString("sno");
 				String cno = rs.getString("cno");
-				String sname = DaoFactory.getStudentDao().getStudent(sno).getSname();
+				String sname = MyFactory.getStudentDao().getStudent(sno).getSname();
 				
 				
-				String cname = DaoFactory.getCourseDao().cnoGetCourse(cno).getCname();
+				String cname = MyFactory.getCourseDao().cnoGetCourse(cno).getCname();
 				Double grade = rs.getDouble("grade");
 
 				sc.setName(sname);

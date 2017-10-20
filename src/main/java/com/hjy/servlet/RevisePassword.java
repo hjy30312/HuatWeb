@@ -1,7 +1,7 @@
 package com.hjy.servlet;
 
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 
 import javax.jms.Session;
 import javax.servlet.ServletException;
@@ -33,8 +33,8 @@ public class RevisePassword extends HttpServlet {
          */
         if (oldPassword.equals(student.getPassword())) {
             student.setPassword(newPassword);
-            DaoFactory.getStudentDao().updateStudent(student);
-            student = DaoFactory.getStudentDao().getStudent(sno);
+            MyFactory.getStudentDao().updateStudent(student);
+            student = MyFactory.getStudentDao().getStudent(sno);
             System.out.println("密码修改后：" + student.getPassword());
             response.sendRedirect(request.getContextPath() + "/StudentIndex.jsp");
         } else {

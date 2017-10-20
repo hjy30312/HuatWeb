@@ -1,22 +1,17 @@
 package com.hjy.util;
 
-import com.hjy.dao.ICourseDao;
-import com.hjy.dao.IScDao;
-import com.hjy.dao.IStudentDao;
-import com.hjy.dao.IUserDao;
-import com.hjy.dao.impl.CourseDao;
-import com.hjy.dao.impl.ScDao;
-import com.hjy.dao.impl.StudentDao;
-import com.hjy.dao.impl.UserDao;
+import com.hjy.dao.*;
+import com.hjy.dao.impl.*;
+import com.hjy.service.ICatergoryService;
+import com.hjy.service.impl.CatergoryServiceImpl;
 
 import java.util.Properties;
 
-public class DaoFactory {
-    
-    public static IStudentDao getStudentDao() {
-        return new StudentDao();
-    }
+public class MyFactory {
 
+    public static ICatergory getCategoryDao() {return new CategoryDaoImpl();}
+    public static IStudentDao getStudentDao() { return new StudentDao(); }
+    public static ICatergoryService getCatergoryService() {return new CatergoryServiceImpl();}
     public static ICourseDao getCourseDao() {
         return new CourseDao();
     }
@@ -33,7 +28,7 @@ public class DaoFactory {
     public static Properties properties = new Properties();
 
     public static Object getObject(String name) {
-        System.out.println(name);
+
         String className = properties.getProperty(name);
         Object obj = null;
         try {

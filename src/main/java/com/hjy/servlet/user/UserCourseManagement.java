@@ -2,7 +2,7 @@ package com.hjy.servlet.user;
 
 import com.hjy.model.Course;
 import com.hjy.model.Student;
-import com.hjy.util.DaoFactory;
+import com.hjy.util.MyFactory;
 import com.hjy.util.DatabaseBean;
 import com.hjy.util.Pagination;
 
@@ -29,7 +29,7 @@ public class UserCourseManagement extends HttpServlet {
         Pagination pagination = new Pagination();
         pagination.setPageNo(page);
         pagination.setUrl("UserCourseManagement?");
-        List<Course> courses = DaoFactory.getCourseDao().getAllCourse(pagination);
+        List<Course> courses = MyFactory.getCourseDao().getAllCourse(pagination);
         request.setAttribute("courses", courses);
         request.setAttribute("pagination", pagination);
 

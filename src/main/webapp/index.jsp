@@ -20,7 +20,7 @@
                         <div class="panel-head">
                             <strong class="icon-file-text"> 文章分类</strong>
                         </div>
-                        <
+
                         <ul class="list-group">
                             <c:forEach var="category" items="${categories}" varStatus="status">
                                 <li><span class="float-right badge bg-main">${category.count}</span>
