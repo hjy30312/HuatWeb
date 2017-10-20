@@ -1,5 +1,6 @@
 package com.hjy.test;
 
+import com.hjy.dao.impl.StudentDao;
 import com.hjy.model.Course;
 import com.hjy.util.DaoFactory;
 
