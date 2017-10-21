@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <servlet>
-    <servlet-name>StartServlet</servlet-name>
-  </servlet>
 
+  <servlet>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>com.hjy.servlet.Index</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/index.jsp</url-pattern>
+  </servlet-mapping>
+  <!--
   <display-name>demo</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -13,4 +19,5 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+-->
 </web-app>

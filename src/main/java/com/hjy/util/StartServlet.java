@@ -1,5 +1,7 @@
 package com.hjy.util;
 
+
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import java.io.*;
@@ -14,17 +16,15 @@ public class StartServlet extends HttpServlet{
     @Override
     public void init() throws ServletException {
         try {
-            String path = this.getServletContext().getRealPath("/config/factory.properties");
+            String path = this.getServletContext().getRealPath("../resourse/config/factory.properties");
             InputStream in = new BufferedInputStream(new FileInputStream(path));
             MyFactory.properties.load(in);
             in.close();
+            System.out.println("StartServlet");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
-
 }
